@@ -1,3 +1,4 @@
+# Server side of the application and web client is implemented here
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
