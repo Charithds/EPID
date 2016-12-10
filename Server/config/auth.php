@@ -71,7 +71,7 @@ return [
         // ],
 
         'users' => [
-            'driver' => 'database',
+            'driver' => 'eloquent',
             'model' => App\User::class,
             'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
         ],
