@@ -9,6 +9,7 @@ class User extends Authenticatable
 {
     use EntrustUserTrait;
 
+    public $primaryKey = 'nic_no';
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nic_no', 'password','user_type', 'email',
     ];
 
     /**
@@ -27,4 +28,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getAuthIdentifier()
+    {
+        return $this->nic_no;
+    }
+    public function getAuthIdentifierName()
+    {
+        return 'nic_no';
+    }
 }

@@ -71,9 +71,10 @@ return [
         // ],
 
         'users' => [
-            'driver' => 'eloquent',
+            'driver' => 'epid',
             'model' => App\User::class,
             'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
+            'table' => 'users',
         ],
     ],
 

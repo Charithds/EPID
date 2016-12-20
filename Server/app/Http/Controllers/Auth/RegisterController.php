@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Doctor;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -21,7 +22,6 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
     /**
      * Where to redirect users after login / registration.
      *
@@ -51,6 +51,13 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+
+            // @TODO : add validation rules
+
+//            'nic_no' => 'required|digits:9',
+//            'user_type' => 'required|in:doctor,medical_officer',
+//            'registration_no' => 'required|digits_between:1,6',
+//
         ]);
     }
 
@@ -62,10 +69,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $user = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'nic_no' => $data['nic_no'],
+            'user_type' => $data['user_type'],
         ]);
+
+        if ($data['user_type'] == 'doctor'){
+            Doctor::create([
+                'registration_no' => $data['registration_no'],
+                'nic_no' => $data['nic_no'],
+                'full_name' =>$data['name'],
+                'hospital_id' => $data['hospital_id'],
+                'contact_no' => $data['contact_no'],
+            ]);
+        }
+        return $user;
     }
 }

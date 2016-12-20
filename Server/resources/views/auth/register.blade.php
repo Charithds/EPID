@@ -10,6 +10,38 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
 
+                        <div class="form-group{{ $errors->has('nic_no') ? ' has-error' : '' }}">
+                            <label for="nic_no" class="col-md-4 control-label">NIC no</label>
+
+                            <div class="col-md-6">
+                                <input id="nic_no" type="text" class="form-control" name="nic_no" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('nic_no') ? ' has-error' : '' }}">
+                            <label for="registration_no" class="col-md-4 control-label">Reg. no</label>
+
+                            <div class="col-md-6">
+                                <input id="registration_no" type="text" class="form-control" name="registration_no" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('nic_no') ? ' has-error' : '' }}">
+                            <label for="hospital_id" class="col-md-4 control-label">Hospital</label>
+
+                            <div class="col-md-6">
+                                <input id="hospital_id" type="text" class="form-control" name="hospital_id" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('nic_no') ? ' has-error' : '' }}">
+                            <label for="contact_no" class="col-md-4 control-label">Contact no</label>
+
+                            <div class="col-md-6">
+                                <input id="contact_no" type="text" class="form-control" name="contact_no" required autofocus>
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
@@ -21,6 +53,19 @@
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('nic_no') ? ' has-error' : '' }}">
+                            <label for="user_type" class="col-md-4 control-label">User type</label>
+
+                            <div class="col-md-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="user_type" value="doctor" required autofocus>Doctor
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="user_type" value="medical_officer" required autofocus>Medical Officer
+                                </label>
                             </div>
                         </div>
 
